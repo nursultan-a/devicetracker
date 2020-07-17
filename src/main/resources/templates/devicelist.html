@@ -11,81 +11,77 @@
 </head>
 <body class="">
 
+
 <div class="loader d-none">Loading...</div>
 
-<form method="post">
-    <div class="header">
-        <div class="container">
+<header th:insert="fragments/header"></header>
+<div class="main-content">
+
+    <form method="post">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-12 header">
-                    <div class="row align-items-center">
-<!--                        <h1 class="col-md-6">Device List</h1>-->
-<!--                        <img class="col-md-6" src="img/logo.png" alt="KARDELEN">-->
-                        <div class="col-md-3 logo-cage">
-                            <h1 class="logo-name">KARDELEN</h1>
-                            <p class="logo-desc">Muhendislik & Otomasyon</p>
+                <div class="col-md-4 left-side">
+                    <div class="row">
+                        <h1 class="col-12 text-center ">CONTROL DEVICES</h1>
+                        <div class="form-group col-md-12">
+                            <select id="rspnsmsgtp" name="msg" class="form-control">
+                                <option value="NOTHING" selected>SELECT NEXT RESPONSE</option>
+                                <option value="MSGPSV">PASSIVE</option>
+                                <option value="MSGACT">ACTIVATE</option>
+                                <option value="MSGRS1">RESTRICTED 1</option>
+                                <option value="MSGRS2">RESTRICTED 2</option>
+                                <option value="MSGRS3">RESTRICTED 3</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12" >
+                            <button type="submit" class="btn btn-primary col-md-12" id="submit">SET NEXT RESPONSE</button>
                         </div>
 
-                        <div class="col-md-4">
-                            <h1 class="project-name">Device Tracker</h1>
-
+                        <div class="form-group col-12" style="margin-top: 50px;">
+                            <hr>
                         </div>
 
-                        <span class="col-md-4 msg-selector d-flex justify-content-end">
-                            <div class="form-group row align-items-center" style="margin-bottom: 0px;">
-                                <label for="rspnsmsgtp" class="col-sm-auto col-form-label align-items-center msg-selector-txt">Set Next Response:</label>
-                                <div class="col-lg-auto align-items-center">
-                                    <select id="rspnsmsgtp" name="msg" class="form-control form-control-sm align-items-center msg-selector-dd">
-                                        <option value="NOTHING" selected></option>
-                                        <option value="MSGPSV">PASSIVE</option>
-                                        <option value="MSGACT">ACTIVATE</option>
-                                        <option value="MSGRS1">RESTRICTED 1</option>
-                                        <option value="MSGRS2">RESTRICTED 2</option>
-                                        <option value="MSGRS3">RESTRICTED 3</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </span>
-                        <span class="col-md-1 d-flex justify-content-end"><button type="submit" class="btn btn-primary" id="submit">submit</button></span>
+                        <h1 class="col-12 text-center">STATUS SUMMARY</h1>
+                        <div class="col-md-4 stat"><h4><span class="badge badge-primary col-md-12">TOTAL: <span th:text="${totalDevice}"></span></span></h4></div>
+                        <div class="col-md-4 stat"><h4><span class="badge badge-success col-md-12">ACTIVE: <span th:text="${activeDevice}"></span></span></h4></div>
+                        <div class="col-md-4 stat"><h4><span class="badge badge-secondary col-md-12">PASSIVE: <span th:text="${passiveDevice}"></span></span></h4></div>
+                        <div class="col-md-4 stat"><h4><span class="badge badge-warning col-md-12">RESTRICTED 1: <span th:text="${r1Device}"></span></span></h4></div>
+                        <div class="col-md-4 stat"><h4><span class="badge badge-danger col-md-12">RESTRICTED 2: <span th:text="${r2Device}"></span></span></h4></div>
+                        <div class="col-md-4 stat"><h4><span class="badge badge-dark col-md-12">RESTRICTED 3: <span th:text="${r3Device}"></span></span></h4></div>
+
+                        <div class="form-group col-12" style="margin-top: 50px;">
+                            <hr>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12 justify-items-center " >
-                    <h3><span class="badge badge-primary">total: <span th:text="${totalDevice}"></span></span></h3>
-                    <span class="badge badge-success">active: <span th:text="${activeDevice}"></span></span>
-                    <span class="badge badge-success">passive: <span th:text="${passiveDevice}"></span></span>
-                    <span class="badge badge-warning">r1: <span th:text="${r1Device}"></span></span>
-                    <span class="badge badge-danger">r2: <span th:text="${r2Device}"></span></span>
-                    <span class="badge badge-dark">r3: <span th:text="${r3Device}"></span></span>
+
+                <!-- Table of devices-->
+                <div class="col-md-8">
+                    <table class="table table-bordered table-striped table-dark">
+                        <thead class="sticky" id="thead">
+                        <tr>
+                            <th scope="col"><input type="checkbox" id="allDevices" th:value="all" onclick=" checkAllDevices()"></th>
+                            <th scope="col">NAME</th>
+                            <th scope="col">GSM</th>
+                            <th scope="col">CURRENT STATUS</th>
+                            <th scope="col">NEXT RESPONSE</th>
+                            <th scope="col">REGISTERED@</th>
+                            <th scope="col">LAST UPDATE</th>
+                        </tr>
+                        </thead>
+                        <!--  js code-->
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+</div>
 
-    <div class="container">
-        <table class="table table-bordered table-striped table-dark">
-            <thead class="sticky" id="thead">
-            <tr>
-                <th scope="col"><input type="checkbox" id="allDevices" th:value="all" onclick=" checkAllDevices()"></th>
-                <th scope="col">NAME</th>
-                <th scope="col">GSM</th>
-                <th scope="col">CURRENT STATUS</th>
-                <th scope="col">NEXT RESPONSE</th>
-                <th scope="col">REGISTERED@</th>
-                <th scope="col">LAST UPDATE</th>
-            </tr>
-            </thead>
-            <!--  js code-->
-        </table>
-    </div>
-</form>
-
-<div class="sticky col-1"><a href="https://instagram.com/akyptan">@akyptan</a></div>
 
 
 
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<div class="sticky col-1"><a href="https://instagram.com/akyptan">@akyptan</a></div>
+<button onclick="topFunction()" id="goTop" title="Go to top">Top</button>
 
 
 </body>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+ <html  xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
     <meta charset="UTF-8">
     <base href="/">
 <!--    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
@@ -21,13 +21,16 @@
 
         <!-- Icon -->
         <div class="fadeIn first">
-            <h3>DEVICE TRACKER</h3>
+            <h3>KARDELEN | DEVICE TRACKER</h3>
         </div>
 
         <!-- Login Form -->
-        <form>
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-            <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+        <form name="f" th:action="@{/login}" method="post">
+
+            <div th:if="${param.error}" class="border  bg-danger text-white">Invalid username and/or password.</div>
+            <div th:if="${param.logout}" class="border bg-success text-white">You have been logged out.</div>
+            <input type="text" id="username" class="fadeIn second" name="username" placeholder="username"/>
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password"/>
             <input type="submit" class="fadeIn fourth" value="Log In">
         </form>
 
