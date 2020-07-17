@@ -44,7 +44,7 @@ h3 {
 #formContent {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #311b92;
+    background: #000063;
     padding: 30px;
     width: 90%;
     max-width: 450px;
@@ -96,6 +96,7 @@ input[type=button], input[type=submit], input[type=reset]  {
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
     margin: 5px 20px 40px 20px;
+    width: 85%;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;

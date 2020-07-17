@@ -29,9 +29,9 @@ h1{
 
 div.sticky {
     position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
     bottom: 10px;
-    left: 10px;
+    left: 50px;
     padding: 0px;
     font-size: 12px;
 }
@@ -56,7 +56,7 @@ thead th { position: sticky; top: 0; margin-top: 0px; background-color: black;}
     display: none;
     position: fixed;
     bottom: 40px;
-    left: 30px;
+    left: 50px;
     z-index: 99;
     font-size: 18px;
     border: none;
