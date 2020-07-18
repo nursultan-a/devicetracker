@@ -20,7 +20,26 @@
     <form method="post">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4 left-side">
+                <!-- Table of devices-->
+                <div class="col-md-8">
+                    <table class="table table-bordered table-striped table-dark">
+                        <thead class="sticky" id="thead">
+                        <tr>
+                            <th scope="col"><input type="checkbox" id="allDevices" th:value="all" onclick=" checkAllDevices()"></th>
+                            <th scope="col">NAME</th>
+                            <th scope="col">GSM</th>
+                            <th scope="col">CURRENT STATUS</th>
+                            <th scope="col">NEXT RESPONSE</th>
+                            <th scope="col">REGISTERED@</th>
+                            <th scope="col">LAST UPDATE</th>
+                        </tr>
+                        </thead>
+                        <!--  js code-->
+                    </table>
+                </div>
+
+<!--                stats and commands-->
+                <div class="col-md-4 right-side">
                     <div class="row">
                         <h1 class="col-12 text-center ">CONTROL DEVICES</h1>
                         <div class="form-group col-md-12">
@@ -55,23 +74,7 @@
                     </div>
                 </div>
 
-                <!-- Table of devices-->
-                <div class="col-md-8">
-                    <table class="table table-bordered table-striped table-dark">
-                        <thead class="sticky" id="thead">
-                        <tr>
-                            <th scope="col"><input type="checkbox" id="allDevices" th:value="all" onclick=" checkAllDevices()"></th>
-                            <th scope="col">NAME</th>
-                            <th scope="col">GSM</th>
-                            <th scope="col">CURRENT STATUS</th>
-                            <th scope="col">NEXT RESPONSE</th>
-                            <th scope="col">REGISTERED@</th>
-                            <th scope="col">LAST UPDATE</th>
-                        </tr>
-                        </thead>
-                        <!--  js code-->
-                    </table>
-                </div>
+
             </div>
         </div>
     </form>
@@ -80,7 +83,7 @@
 
 
 
-<div class="sticky col-1"><a href="https://instagram.com/akyptan">@akyptan</a></div>
+<div class="sticky"><a href="https://instagram.com/akyptan">@akyptan</a></div>
 <button onclick="topFunction()" id="goTop" title="Go to top">Top</button>
 
 
