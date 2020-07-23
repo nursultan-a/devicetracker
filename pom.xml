@@ -13,6 +13,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dt</name>
 	<description>Elevator Phone Tracker for Kardelen Engineering</description>
+	<packaging>war</packaging>
+
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -58,6 +60,13 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!--remove embedded tomcat server-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>

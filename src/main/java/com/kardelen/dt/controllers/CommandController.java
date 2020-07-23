@@ -23,7 +23,7 @@ import java.util.Optional;
 
 
 @Controller
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8080/pt")
 @RequestMapping("/api")
 public class CommandController {
 

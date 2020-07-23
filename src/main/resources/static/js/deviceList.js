@@ -1,6 +1,6 @@
 let id = [];
 $(document).ready(function(){
-    $.getJSON("http://localhost:8080/api/all", function(data){
+    $.getJSON("http://localhost:8080/pt/api/all", function(data){
         var items = [];
         $.each( data, function( key, val ) {
             id.push(val.id);
