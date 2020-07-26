@@ -1,6 +1,6 @@
 let id = [];
 $(document).ready(function(){
-    $.getJSON("http://localhost:8080/pt/api/all", function(data){
+    $.getJSON("http://localhost:8080/api/all", function(data){
         var items = [];
         $.each( data, function( key, val ) {
             id.push(val.id);
@@ -53,8 +53,8 @@ $("#submit").click(function(e) {
         if ($("#rspnsmsgtp").val() != "NOTHING"){
             $.ajax({
                 async:true,
-                type: "POST",
-                url: "/pt/api/mltpl/",
+                type: "GET",
+                url: "/api/mltpl/",
                 data:"deviceIds="+checks.toString()+"&msg="+$("#rspnsmsgtp").val(),
                 beforeSend:function(result) {
 
@@ -113,4 +113,30 @@ function scrollFunction() {
 function topFunction() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+}
+
+
+//filter
+
+let activeDevices = function(){
+    alert("active devices");
+
+ $.ajax({
+                 async:true,
+                 type: "GET",
+                 url: "/api/status/",
+                 data:"status=MSGACT",
+                 beforeSend:function(result) {
+
+                     console.log("before send");
+                 },
+                 success: function(result) {
+                     // alert('Multiple update Is done');
+                     console.log(result);
+                 },
+                 error: function(result) {
+                     alert('error');
+                 }
+             });
+
 }

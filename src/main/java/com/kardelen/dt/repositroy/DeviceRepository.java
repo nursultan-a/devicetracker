@@ -5,6 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 /**
  * @author Nursultan Abdrakypov
  * @email nuronjava@gmail.com
@@ -16,4 +18,5 @@ import org.springframework.data.repository.query.Param;
 
 public interface DeviceRepository extends CrudRepository<Device, String> {
     long countByCurrentStatus(String status);
+    List<Device> findByCurrentStatus(String status);
 }

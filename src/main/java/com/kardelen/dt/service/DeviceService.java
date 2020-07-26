@@ -26,6 +26,9 @@ public class DeviceService {
     public Iterable<Device> getDeviceList(){
         return deviceRepository.findAll();
     }
+    public Iterable<Device> getDeviceListByStatus(String currentStatus){
+        return deviceRepository.findByCurrentStatus(currentStatus);
+    }
 
     public Optional<Device> getDevice(String deviceID){
         return deviceRepository.findById(deviceID);
