@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/devices").hasRole("USER")
                 .antMatchers("/api/**").hasRole("USER")
 //                .antMatchers("/api/mltpl").permitAll()
-                .antMatchers("/").permitAll()
+                .antMatchers("/").hasRole("USER")
                 .and().formLogin()
                 .loginPage("/login").permitAll()
                 .and()

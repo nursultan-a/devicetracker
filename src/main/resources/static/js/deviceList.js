@@ -54,7 +54,7 @@ $("#submit").click(function(e) {
             $.ajax({
                 async:true,
                 type: "POST",
-                url: "/api/mltpl/",
+                url: "/pt/api/mltpl/",
                 data:"deviceIds="+checks.toString()+"&msg="+$("#rspnsmsgtp").val(),
                 beforeSend:function(result) {
 

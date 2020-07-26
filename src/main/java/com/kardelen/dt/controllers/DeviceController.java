@@ -26,7 +26,7 @@ import java.util.Optional;
 
 
 @Controller
-@RequestMapping("/ecp")
+@RequestMapping("/pt/ecp")
 public class DeviceController {
 
     @Autowired
