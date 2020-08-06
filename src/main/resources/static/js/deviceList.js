@@ -1,6 +1,31 @@
+//filtering starts
 let id = [];
+let current_place = "";
+let url = "http://localhost:8080/api/"
 $(document).ready(function(){
-    $.getJSON("http://localhost:8080/api/all", function(data){
+   current_place = window.location.href.split('/')[3];
+    console.log(current_place);
+
+
+    if (current_place === "devices"){
+        url = url+"all/"
+    }
+    else if(current_place === "activedevices"){
+        url = url+"status?status=MSGACT";
+    }
+    else if(current_place === "passivedevices"){
+        url = url+"status?status=MSGPSV";
+    }
+    else if(current_place == "restrictedone"){
+        url = url+"status?status=MSGRS1"
+    }
+    else if(current_place == "restrictedtwo"){
+        url = url+"status?status=MSGRS2"
+    }
+    else if(current_place == "restrictedthree"){
+        url = url+"status?status=MSGRS3"
+    }
+    $.getJSON(url, function(data){
         var items = [];
         $.each( data, function( key, val ) {
             id.push(val.id);
@@ -24,10 +49,11 @@ $(document).ready(function(){
         }).appendTo( "table" );
 
         // console.log(data);
+        console.log("The URL of this page is: " + window.location.href);
     });
-
-
 });
+
+//filtering ends
 
 let validateForm = function() {
     let checks = $('input[type="checkbox"]:checked').map(function() {
@@ -51,9 +77,16 @@ $("#submit").click(function(e) {
     // console.log(checks)
     if ( checks.length > 0){
         if ($("#rspnsmsgtp").val() != "NOTHING"){
+            let url = "/api";
+            if (current_place === "devices"){
+                url = url+"/mltpl/"
+            }
+            else if(current_place === "activedevices"){
+                url = url+"/status/"
+            }
             $.ajax({
                 async:true,
-                type: "GET",
+                type: "POST",
                 url: "/api/mltpl/",
                 data:"deviceIds="+checks.toString()+"&msg="+$("#rspnsmsgtp").val(),
                 beforeSend:function(result) {
@@ -117,26 +150,3 @@ function topFunction() {
 
 
 //filter
-
-let activeDevices = function(){
-    alert("active devices");
-
- $.ajax({
-                 async:true,
-                 type: "GET",
-                 url: "/api/status/",
-                 data:"status=MSGACT",
-                 beforeSend:function(result) {
-
-                     console.log("before send");
-                 },
-                 success: function(result) {
-                     // alert('Multiple update Is done');
-                     console.log(result);
-                 },
-                 error: function(result) {
-                     alert('error');
-                 }
-             });
-
-}

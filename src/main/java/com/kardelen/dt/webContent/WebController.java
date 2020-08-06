@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  * @author Nursultan Abdrakypov
@@ -22,7 +22,7 @@ public class WebController {
 
     @GetMapping("/devices")
     public String devices(Model model) {
-        System.out.println();
+
         model.addAttribute("totalDevice",deviceService.count());
         model.addAttribute("activeDevice", deviceService.countByStatus(Command.ACTIVE));
         model.addAttribute("passiveDevice", deviceService.countByStatus(Command.PASSIVE));
@@ -31,6 +31,71 @@ public class WebController {
         model.addAttribute("r3Device", deviceService.countByStatus(Command.RESTRICTED3));
 
         return "devicelist";
+    }
+
+    @GetMapping("/activedevices")
+    public String active(Model model) {
+        model.addAttribute("totalDevice",deviceService.count());
+        model.addAttribute("activeDevice", deviceService.countByStatus(Command.ACTIVE));
+        model.addAttribute("passiveDevice", deviceService.countByStatus(Command.PASSIVE));
+        model.addAttribute("r1Device", deviceService.countByStatus(Command.RESTRICTED1));
+        model.addAttribute("r2Device", deviceService.countByStatus(Command.RESTRICTED2));
+        model.addAttribute("r3Device", deviceService.countByStatus(Command.RESTRICTED3));
+
+        return "devicelist";
+    }
+
+    @GetMapping("/passivedevices")
+    public String passive(Model model) {
+        model.addAttribute("totalDevice",deviceService.count());
+        model.addAttribute("activeDevice", deviceService.countByStatus(Command.ACTIVE));
+        model.addAttribute("passiveDevice", deviceService.countByStatus(Command.PASSIVE));
+        model.addAttribute("r1Device", deviceService.countByStatus(Command.RESTRICTED1));
+        model.addAttribute("r2Device", deviceService.countByStatus(Command.RESTRICTED2));
+        model.addAttribute("r3Device", deviceService.countByStatus(Command.RESTRICTED3));
+
+        return "devicelist";
+    }
+
+    @GetMapping("/restrictedone")
+    public String restrictedone(Model model) {
+        model.addAttribute("totalDevice",deviceService.count());
+        model.addAttribute("activeDevice", deviceService.countByStatus(Command.ACTIVE));
+        model.addAttribute("passiveDevice", deviceService.countByStatus(Command.PASSIVE));
+        model.addAttribute("r1Device", deviceService.countByStatus(Command.RESTRICTED1));
+        model.addAttribute("r2Device", deviceService.countByStatus(Command.RESTRICTED2));
+        model.addAttribute("r3Device", deviceService.countByStatus(Command.RESTRICTED3));
+
+        return "devicelist";
+    }
+
+    @GetMapping("/restrictedtwo")
+    public String restrictedtwo(Model model) {
+        model.addAttribute("totalDevice",deviceService.count());
+        model.addAttribute("activeDevice", deviceService.countByStatus(Command.ACTIVE));
+        model.addAttribute("passiveDevice", deviceService.countByStatus(Command.PASSIVE));
+        model.addAttribute("r1Device", deviceService.countByStatus(Command.RESTRICTED1));
+        model.addAttribute("r2Device", deviceService.countByStatus(Command.RESTRICTED2));
+        model.addAttribute("r3Device", deviceService.countByStatus(Command.RESTRICTED3));
+
+        return "devicelist";
+    }
+
+    @GetMapping("/restrictedthree")
+    public String restrictedthree(Model model) {
+        model.addAttribute("totalDevice",deviceService.count());
+        model.addAttribute("activeDevice", deviceService.countByStatus(Command.ACTIVE));
+        model.addAttribute("passiveDevice", deviceService.countByStatus(Command.PASSIVE));
+        model.addAttribute("r1Device", deviceService.countByStatus(Command.RESTRICTED1));
+        model.addAttribute("r2Device", deviceService.countByStatus(Command.RESTRICTED2));
+        model.addAttribute("r3Device", deviceService.countByStatus(Command.RESTRICTED3));
+
+        return "devicelist";
+    }
+
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        return "admin";
     }
 
     @GetMapping("/")

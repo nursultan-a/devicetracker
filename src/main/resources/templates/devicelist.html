@@ -61,19 +61,44 @@
                         </div>
 
                         <h1 class="col-12 text-center">STATUS SUMMARY</h1>
-                        <button onclick="activeDevices()" class="col-md-4 stat">
-                            <h4>
+
+                            <a class="col-md-4 stat" th:href="@{/devices}">
                                         <span class="badge badge-primary col-md-12">
                                             TOTAL: <span th:text="${totalDevice}"></span>
                                         </span>
-                            </h4>
-                        </button>
-                        <div class="col-md-4 stat"><h4><span class="badge badge-primary col-md-12">TOTAL: <span th:text="${totalDevice}"></span></span></h4></div>
-                        <div class="col-md-4 stat"><h4><span class="badge badge-success col-md-12">ACTIVE: <span th:text="${activeDevice}"></span></span></h4></div>
-                        <div class="col-md-4 stat"><h4><span class="badge badge-secondary col-md-12">PASSIVE: <span th:text="${passiveDevice}"></span></span></h4></div>
-                        <div class="col-md-4 stat"><h4><span class="badge badge-warning col-md-12">RESTRICTED 1: <span th:text="${r1Device}"></span></span></h4></div>
-                        <div class="col-md-4 stat"><h4><span class="badge badge-danger col-md-12">RESTRICTED 2: <span th:text="${r2Device}"></span></span></h4></div>
-                        <div class="col-md-4 stat"><h4><span class="badge badge-dark col-md-12">RESTRICTED 3: <span th:text="${r3Device}"></span></span></h4></div>
+                            </a>
+
+                        <a class="col-md-4 stat" th:href="@{/activedevices}">
+                                        <span class="badge badge-success col-md-12">
+                                            ACTIVE: <span th:text="${activeDevice}"></span>
+                                        </span>
+                        </a>
+
+                        <a class="col-md-4 stat" th:href="@{/passivedevices}">
+                                        <span class="badge badge-secondary col-md-12">
+                                            PASSIVE: <span th:text="${passiveDevice}"></span>
+                                        </span>
+                        </a>
+
+                        <a class="col-md-4 stat" th:href="@{/restrictedone}">
+                                        <span class="badge badge-danger col-md-12">
+                                            RESTRICTED 1: <span th:text="${r1Device}"></span>
+                                        </span>
+                        </a>
+
+                        <a class="col-md-4 stat" th:href="@{/restrictedtwo}">
+                                        <span class="badge badge-warning col-md-12">
+                                            RESTRICTED 2: <span th:text="${r2Device}"></span>
+                                        </span>
+                        </a>
+
+                        <a class="col-md-4 stat" th:href="@{/restrictedthree}">
+                                        <span class="badge badge-dark col-md-12">
+                                            RESTRICTED 3: <span th:text="${r3Device}"></span>
+                                        </span>
+                        </a>
+
+
 
                         <div class="form-group col-12" style="margin-top: 50px;">
                             <hr>

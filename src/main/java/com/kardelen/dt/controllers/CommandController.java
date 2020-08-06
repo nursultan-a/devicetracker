@@ -1,19 +1,13 @@
 package com.kardelen.dt.controllers;
 
-
-import com.kardelen.dt.constants.Command;
 import com.kardelen.dt.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.kardelen.dt.repositroy.DeviceRepository;
 import com.kardelen.dt.model.Device;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Optional;
 
 /**
  * @author Nursultan Abdrakypov
@@ -80,7 +74,7 @@ public class CommandController {
         Iterable<Device> deviceListByStatus = deviceService.getDeviceListByStatus(status);
 
         if (deviceListByStatus != null){
-            System.out.println("There is no status with the status: "+ status.toString());
+            System.out.println("There is devices with the status: "+ status.toString());
             return deviceService.getDeviceListByStatus(status);
         }else {
             System.out.println("There is no status with the status: "+ status.toString());

@@ -1,5 +1,6 @@
 package com.kardelen.dt.service;
 
+import com.kardelen.dt.model.Device;
 import com.kardelen.dt.model.DtUserDetails;
 import com.kardelen.dt.model.User;
 import com.kardelen.dt.repositroy.UserRepository;
@@ -20,7 +21,29 @@ import java.util.Optional;
 public class DtUserDetailsService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
+    public Iterable<User> getUserList(){
+        return userRepository.findAll();
+    }
+    public boolean isExists(String username){
+        System.out.println(" user details service: "+userRepository.findByUserName(username).toString());
+        if (userRepository.findByUserName(username).toString() == "Optional.empty"){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 
+    public boolean deleteUser(String username){
+        System.out.println(" user details service: "+userRepository.findByUserName(username).toString());
+        if (userRepository.findByUserName(username).toString() == "Optional.empty"){
+            return false;
+        }
+        else {
+            userRepository.deleteById(userRepository.findByUserName(username).get().getId());
+            return true;
+        }
+    }
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -29,5 +52,13 @@ public class DtUserDetailsService implements UserDetailsService {
         user.orElseThrow(() -> new UsernameNotFoundException("Not found:" + userName));
 
         return user.map(DtUserDetails::new).get();
+    }
+
+    public Optional<User> findUserByName(String username) {
+        return userRepository.findByUserName(username);
+    }
+    public void saveUser(User user){
+
+        userRepository.save(user);
     }
 }
