@@ -17,7 +17,7 @@ import com.kardelen.dt.model.Device;
 
 
 @Controller
-@CrossOrigin(origins = "http://localhost:8080/")
+@CrossOrigin(origins = "http://kardelenmuhendislik.net:80/")
 @RequestMapping("/api")
 public class CommandController {
 

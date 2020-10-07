@@ -1,3 +1,3 @@
 truncate user;
 
-insert into user (id, user_name, password, active, roles ) values (2, "q", "q", true, "ROLE_USER"), (1, "admin", "admin", true, "ROLE_ADMIN");
+insert into user (id, user_name, password, active, roles ) values (2, "nursultan", "natruslun", true, "ROLE_USER"), (1, "admin", "Krdln2001", true, "ROLE_ADMIN");

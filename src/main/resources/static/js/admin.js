@@ -1,6 +1,9 @@
+
+// let host = "217.116.205.45";
+let host = "kardelenmuhendislik.net";
 let id = [];
 let current_place = "";
-let url = "http://localhost:8080/admin/all"
+let url = "http://"+host+":80/admin/all"
 $(document).ready(function(){
     console.log("admin url");
 

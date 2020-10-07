@@ -5,10 +5,7 @@ import com.kardelen.dt.constants.Command;
 import com.kardelen.dt.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 
 import com.kardelen.dt.repositroy.DeviceRepository;
@@ -26,6 +23,7 @@ import java.util.Optional;
 
 
 @Controller
+@CrossOrigin(origins = "http://kardelenmuhendislik.net:80/")
 @RequestMapping("/ecp")
 public class DeviceController {
 
@@ -51,6 +49,9 @@ public class DeviceController {
             device.get().setCurrentStatus(responseMSG);
             device.get().setLastUpdate(currentTime);
 
+            if(!device.get().getPhoneNumber().equals(phoneNumber)){
+                device.get().setPhoneNumber(phoneNumber);
+            }
             deviceService.saveDevice(device.get());
 
 

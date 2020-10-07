@@ -1,7 +1,11 @@
 //filtering starts
+
+// let host = "217.116.205.45";
+let host = "kardelenmuhendislik.net";
 let id = [];
 let current_place = "";
-let url = "http://localhost:8080/api/"
+// let url = "http://localhost:8080/api/";
+let url = "http://"+host+":80/api/";
 $(document).ready(function(){
    current_place = window.location.href.split('/')[3];
     console.log(current_place);
